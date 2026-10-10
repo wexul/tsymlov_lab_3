@@ -1,0 +1,240 @@
+Лабораторная работа №3, вариант 4 - фактические запуски программ
+======================================================================
+
+Дата выполнения: 10.10.2026
+Python: 3.11.1
+ОС: Windows 10
+
+Файл собран автоматическим прогоном всех программ репозитория:
+каждый раздел содержит команду запуска, поданные аргументы
+и полный вывод программы с кодом возврата.
+
+----------------------------------------------------------------------
+Задание 4 (средняя). Класс «Фигура»: демонстрация
+----------------------------------------------------------------------
+$ py -3 task04_figure.py
+
+Набор фигур (полиморфный вызов describe()):
+  прямоугольник: площадь = 12, периметр = 14
+  круг: площадь = 78.54, периметр = 31.42
+  треугольник: площадь = 6, периметр = 12
+  прямоугольник: площадь = 5, периметр = 21
+Суммарная площадь всех фигур: 101.5
+Попытка создать треугольник со сторонами 1, 1, 5:
+  Ошибка: стороны 1, 1, 5 не образуют треугольник (нарушено неравенство треугольника)
+
+код возврата: 0
+
+----------------------------------------------------------------------
+Задание 4. Прямоугольник через аргументы
+----------------------------------------------------------------------
+$ py -3 task04_figure.py rect 3 4
+
+прямоугольник: площадь = 12, периметр = 14
+
+код возврата: 0
+
+----------------------------------------------------------------------
+Задание 4. Круг через аргументы
+----------------------------------------------------------------------
+$ py -3 task04_figure.py circle 5
+
+круг: площадь = 78.54, периметр = 31.42
+
+код возврата: 0
+
+----------------------------------------------------------------------
+Задание 4. Треугольник через аргументы
+----------------------------------------------------------------------
+$ py -3 task04_figure.py tri 3 4 5
+
+треугольник: площадь = 6, периметр = 12
+
+код возврата: 0
+
+----------------------------------------------------------------------
+Задание 4. Ошибка: стороны не образуют треугольник
+----------------------------------------------------------------------
+$ py -3 task04_figure.py tri 1 1 5
+
+Ошибка: стороны 1.0, 1.0, 5.0 не образуют треугольник (нарушено неравенство треугольника)
+
+код возврата: 1
+
+----------------------------------------------------------------------
+Задание 6 (средняя). Класс со статическим методом: демонстрация
+----------------------------------------------------------------------
+$ py -3 task06_static_method.py
+
+Статические методы вызываются на классе без экземпляра:
+      °C         °F          K
+       0      32.00     273.15
+    36.6      97.88     309.75
+     100     212.00     373.15
+     -40     -40.00     233.15
+Обратный перевод: 98.6 °F = 37.00 °C
+classmethod absolute_zero(): -273.15 °C
+Попытка перевести -300 °C (ниже абсолютного нуля):
+  Ошибка: температура -300 °C ниже абсолютного нуля (-273.15 °C)
+
+код возврата: 0
+
+----------------------------------------------------------------------
+Задание 6. Перевод 36.6 °C через аргумент
+----------------------------------------------------------------------
+$ py -3 task06_static_method.py 36.6
+
+36.6 °C = 97.88 °F = 309.75 K
+
+код возврата: 0
+
+----------------------------------------------------------------------
+Задание 6. Ошибка: температура ниже абсолютного нуля
+----------------------------------------------------------------------
+$ py -3 task06_static_method.py -300
+
+Ошибка: температура -300.0 °C ниже абсолютного нуля (-273.15 °C)
+
+код возврата: 1
+
+----------------------------------------------------------------------
+Задание 10 (средняя). Класс-итератор: демонстрация
+----------------------------------------------------------------------
+$ py -3 task10_iterator.py
+
+Создан FibonacciIterator(count=10, produced=0)
+iter(it) is it: True - объект сам является итератором
+Первые 10 чисел через for: 0 1 1 2 3 5 8 13 21 34
+После обхода итератор исчерпан: list(it) = []
+Ручной вызов next() на новом итераторе: 0 1 1
+sum(FibonacciIterator(10)) = 88 - итератор работает со встроенными функциями
+Попытка создать FibonacciIterator(-5):
+  Ошибка: количество чисел должно быть неотрицательным, получено -5
+
+код возврата: 0
+
+----------------------------------------------------------------------
+Задание 10. Первые 15 чисел Фибоначчи через аргумент
+----------------------------------------------------------------------
+$ py -3 task10_iterator.py 15
+
+Первые 15 чисел Фибоначчи: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377]
+
+код возврата: 0
+
+----------------------------------------------------------------------
+Задание 10. Ошибка: отрицательное количество чисел
+----------------------------------------------------------------------
+$ py -3 task10_iterator.py -5
+
+Ошибка: количество чисел должно быть неотрицательным, получено -5
+
+код возврата: 1
+
+----------------------------------------------------------------------
+Задание 5 (повышенная). Сериализация объектов в JSON
+----------------------------------------------------------------------
+$ py -3 task05_json_serialization.py
+
+Исходный объект: Student('Полошков Ярослав Витальевич', '220042-11', [5, 4, 5])
+Объект -> JSON:
+{
+  "full_name": "Полошков Ярослав Витальевич",
+  "group": "220042-11",
+  "grades": [
+    5,
+    4,
+    5
+  ]
+}
+JSON -> объект: Student('Полошков Ярослав Витальевич', '220042-11', [5, 4, 5])
+Round-trip: restored == student -> True
+Список из 2 студентов сохранён в students_demo.json и загружен обратно: True
+Временный файл students_demo.json удалён.
+Попытка разобрать битый JSON '{not json}':
+  Ошибка: некорректный JSON: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+
+код возврата: 0
+
+----------------------------------------------------------------------
+Задание 9 (повышенная). Абстрактный класс через abc
+----------------------------------------------------------------------
+$ py -3 task09_abc_shape.py
+
+Попытка создать экземпляр абстрактного класса Shape():
+  TypeError: Can't instantiate abstract class Shape with abstract methods area, name, perimeter
+Конкретные фигуры (наследники Shape):
+  круг: площадь = 12.57, периметр = 12.57
+  прямоугольник: площадь = 12, периметр = 14
+  треугольник: площадь = 6, периметр = 12
+Полиморфная total_area(): 30.57
+isinstance(CircleShape(1), Shape): True
+issubclass(TriangleShape, Shape): True
+
+код возврата: 0
+
+----------------------------------------------------------------------
+Задание 9. Круг через аргументы
+----------------------------------------------------------------------
+$ py -3 task09_abc_shape.py circle 2
+
+круг: площадь = 12.57, периметр = 12.57
+
+код возврата: 0
+
+----------------------------------------------------------------------
+Модульные тесты всех заданий (unittest)
+----------------------------------------------------------------------
+$ py -3 -m unittest -v
+
+test_abstract_class_not_instantiable (test_tasks.TestAbcShape.test_abstract_class_not_instantiable) ... ok
+test_areas_and_perimeters (test_tasks.TestAbcShape.test_areas_and_perimeters) ... ok
+test_concrete_shapes_are_shapes (test_tasks.TestAbcShape.test_concrete_shapes_are_shapes) ... ok
+test_describe_inherited_from_abc (test_tasks.TestAbcShape.test_describe_inherited_from_abc) ... ok
+test_name_property (test_tasks.TestAbcShape.test_name_property) ... ok
+test_total_area (test_tasks.TestAbcShape.test_total_area) ... ok
+test_validation (test_tasks.TestAbcShape.test_validation) ... ok
+test_exhausted_iterator_stays_empty (test_tasks.TestFibonacciIterator.test_exhausted_iterator_stays_empty) ... ok
+test_first_numbers (test_tasks.TestFibonacciIterator.test_first_numbers) ... ok
+test_iterator_protocol (test_tasks.TestFibonacciIterator.test_iterator_protocol) ... ok
+test_negative_count_rejected (test_tasks.TestFibonacciIterator.test_negative_count_rejected) ... ok
+test_works_with_builtin_functions (test_tasks.TestFibonacciIterator.test_works_with_builtin_functions) ... ok
+test_zero_and_one (test_tasks.TestFibonacciIterator.test_zero_and_one) ... ok
+test_base_class_methods_raise (test_tasks.TestFigure.test_base_class_methods_raise) ... ok
+test_circle_area_and_perimeter (test_tasks.TestFigure.test_circle_area_and_perimeter) ... ok
+test_describe_format (test_tasks.TestFigure.test_describe_format) ... ok
+test_non_positive_dimensions_rejected (test_tasks.TestFigure.test_non_positive_dimensions_rejected) ... ok
+test_polymorphism (test_tasks.TestFigure.test_polymorphism) ... ok
+test_rectangle_area_and_perimeter (test_tasks.TestFigure.test_rectangle_area_and_perimeter) ... ok
+test_triangle_heron (test_tasks.TestFigure.test_triangle_heron) ... ok
+test_triangle_inequality (test_tasks.TestFigure.test_triangle_inequality) ... ok
+test_average_grade (test_tasks.TestJsonSerialization.test_average_grade) ... ok
+test_invalid_json_rejected (test_tasks.TestJsonSerialization.test_invalid_json_rejected) ... ok
+test_load_missing_file (test_tasks.TestJsonSerialization.test_load_missing_file) ... ok
+test_missing_required_field (test_tasks.TestJsonSerialization.test_missing_required_field) ... ok
+test_mixin_requires_overrides (test_tasks.TestJsonSerialization.test_mixin_requires_overrides) ... ok
+test_round_trip (test_tasks.TestJsonSerialization.test_round_trip) ... ok
+test_save_and_load_file (test_tasks.TestJsonSerialization.test_save_and_load_file) ... ok
+test_student_validation (test_tasks.TestJsonSerialization.test_student_validation) ... ok
+test_to_json_is_valid_json_with_cyrillic (test_tasks.TestJsonSerialization.test_to_json_is_valid_json_with_cyrillic) ... ok
+test_absolute_zero_boundary_allowed (test_tasks.TestTemperatureConverter.test_absolute_zero_boundary_allowed) ... ok
+test_absolute_zero_classmethod (test_tasks.TestTemperatureConverter.test_absolute_zero_classmethod) ... ok
+test_below_absolute_zero_rejected (test_tasks.TestTemperatureConverter.test_below_absolute_zero_rejected) ... ok
+test_callable_on_class_and_instance (test_tasks.TestTemperatureConverter.test_callable_on_class_and_instance) ... ok
+test_known_conversions (test_tasks.TestTemperatureConverter.test_known_conversions) ... ok
+test_round_trip (test_tasks.TestTemperatureConverter.test_round_trip) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 0.034s
+
+OK
+
+код возврата: 0
+
+----------------------------------------------------------------------
+Проверка стиля кода (flake8)
+----------------------------------------------------------------------
+$ py -3 -m flake8 . --statistics
+
+
+код возврата: 0
